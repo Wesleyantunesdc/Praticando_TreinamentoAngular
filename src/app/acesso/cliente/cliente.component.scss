@@ -1,0 +1,40 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+ mat-list{
+     min-width: 40vw;
+ }
+
+ .selecionado{
+     background-color: rgb(46, 106, 216);
+}
+
+header{
+    padding: 8px;
+    background-color: rgba(101, 198, 243, 0.664);
+}
+
+form{
+    flex: auto;
+    width: 40vw;
+    margin-left: 1;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background-color: rgba(4, 176, 255, 0.664);
+    border-radius: 10px;
+    border: solid 1px black;
+    padding: 5px;
+}
+
+mat-radio-button{
+    margin-right: 10px;
+}

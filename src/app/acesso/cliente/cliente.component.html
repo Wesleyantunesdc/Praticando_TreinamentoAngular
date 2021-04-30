@@ -1,0 +1,114 @@
+<header>
+        <button mat-fab color="primary" (click)="adicionarCliente()" aria-label="Example icon button with a delete icon">
+            <mat-icon>person_add</mat-icon>
+        </button>
+    <!-- <button (click)="adicionarCliente()">
+        <nav>Novo</nav>
+    </button> -->
+</header>
+<div class="container">
+    <mat-list>
+        <mat-list-item *ngFor="let cliente of lista" (click)="selecionar(cliente)" [class.selecionado]="cliente===itemSelecionado">
+            {{cliente.nomeCompleto}}
+        </mat-list-item>
+    </mat-list>
+
+    <form [formGroup]="form" >
+    <mat-radio-group formControlName="tipoPessoa">
+        <mat-radio-button value="F">Pessoa Física</mat-radio-button>
+        <mat-radio-button value="J">Pessoa Juridica</mat-radio-button>
+    </mat-radio-group>
+<!-- 
+        <mat-form-field>
+            <mat-label>Tipo Pessoa</mat-label>
+            <input matInput formControlName="tipoPessoa" placeholder="Type">
+        </mat-form-field> -->
+        <ng-container *ngIf="form.controls.tipoPessoa.value === 'F'">
+            <mat-form-field>
+                <mat-label>Cpf/Cnpj</mat-label>
+                <input matInput formControlName="cpfCnpj" placeholder="Cpf" mask="000.000.000-00">
+            </mat-form-field>
+        </ng-container>
+
+        <ng-container *ngIf="form.controls.tipoPessoa.value === 'J'">
+            <mat-form-field>
+                <mat-label>Cpf/Cnpj</mat-label>
+                <input matInput formControlName="cpfCnpj" placeholder="Cnpj" mask="00.000.000/0000-00">
+            </mat-form-field>
+        </ng-container>
+
+        
+
+        <mat-form-field>
+            <mat-label>Nome Completo</mat-label>
+            <input matInput formControlName="nomeCompleto" placeholder="Type">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nome Usual</mat-label>
+            <input matInput formControlName="nomeUsual" placeholder="Type">
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [placeholder]="form.controls.tipoPessoa.value === 'j' ? 'Data fudação':'Data Nascimento' " 
+                formControlName="dataCriacao" type="text"  [matDatepicker]="picker"> 
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+
+        <!-- <mat-form-field>
+            <mat-label>Data Criacao</mat-label>
+            <input matInput [placeholder]="form.controls.tipoPessoa.value === 'j' ? 'Data fudação':'Data Nascimento' " formControlName="dataCriacao">
+        </mat-form-field> -->
+
+
+        <mat-radio-group formControlName="contribuinte">
+            <mat-radio-button value="C">Contribuinte</mat-radio-button>
+            <mat-radio-button value="CI">Contribuinte isento de inscrição</mat-radio-button>
+            <mat-radio-button value="N">Não contribuinte</mat-radio-button>
+        </mat-radio-group>
+
+
+        <!-- <mat-form-field>
+            <mat-label>Contribuinte</mat-label>
+            <input matInput formControlName="contribuinte" placeholder="Type">
+        </mat-form-field> -->
+
+        <mat-form-field>
+            <mat-label>Inscricao Estadual</mat-label>
+            <input matInput formControlName="inscricaoEstadual" placeholder="Type">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Inscricao municipal</mat-label>
+            <input matInput formControlName="inscricaoMunicipal" placeholder="Type">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Type">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Grupo</mat-label>
+            <input matInput formControlName="grupo" placeholder="Type">
+        </mat-form-field>
+
+
+
+        <!-- <input placeholder="campo" formControlName="tipoPessoa" >
+        <input placeholder="campo" formControlName="cpfCnpj">
+        <input placeholder="campo" formControlName="nomeCompleto">
+        <input placeholder="campo" formControlName="nomeUsual">
+        <input placeholder="campo" formControlName="dataCriacao">
+        <input placeholder="campo" formControlName="contribuinte">
+        <input placeholder="campo" formControlName="inscricaoEstadual">
+        <input placeholder="campo" formControlName="inscricaoMunicipal">
+        <input placeholder="campo" formControlName="email">
+        <input placeholder="campo" formControlName="grupo"> -->
+    </form>
+</div>
+
